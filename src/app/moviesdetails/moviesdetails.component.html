@@ -1,0 +1,40 @@
+
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+	<div class="spinner-border" role="status" style="width: 10rem; height: 10rem;">
+	  <span class="sr-only">Loading...</span>
+	</div>
+  </div>
+
+<div class="wrapper">
+ 
+  <div class="container w-50 mx-auto" style="margin-top: 50px">
+    <div class="card col-3" style="width: 18rem; margin-left: 20px">
+      <img
+        class="card-img-top"
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h3 class="card-title"> 
+            <span class="text-danger">Movie Title : </span> 
+            {{ movie.title | uppercase }}</h3>
+
+        <h5 class="card-title">
+            <span class="text-danger">Movie Overview: </span>
+             {{ movie.overview | uppercase }}</h5>
+
+        
+
+        <p>
+            <span class="text-danger">Release Date: </span> 
+             {{ movie.release_date | date }}</p>
+        <p>
+            <span class="text-danger"> Ticket Price:</span> 
+            {{ movie.popularity | currency }}</p>
+        <p class="card-text" *ngIf="movie.isvisable">
+          {{ movie.overview }}
+        </p>
+</div>
+
+<!-- <h1>inside Tv details</h1> -->
+

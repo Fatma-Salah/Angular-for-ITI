@@ -1,0 +1,37 @@
+<div class="container mt-4 pt-4">
+  
+  <div class="w-100  my-4">
+    <mat-paginator style="background-color: rgba(243, 239, 239, 0.445);" class="col-12 text-success fs-6"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 50, 100]"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+  </div>
+   <div class="row ">
+    <div class="col-3" *ngFor="let singleMovie of moviesData"> 
+    <div class="card "  >
+      
+      <a [routerLink]="['/tvs', singleMovie.id]">  
+      <img class="card-img-top" [src]= '"https://image.tmdb.org/t/p/w500"+singleMovie.poster_path' alt="Card image" style="width:100%">
+      </a> 
+        <div class="card-body">
+        
+          <h4 class="card-title">
+             <span class="text-danger">Name : </span>
+            {{singleMovie.name}}</h4>
+        <app-movie-rating [rating] = "singleMovie.rating"></app-movie-rating>
+          <p class="card-text" *ngIf="singleMovie.isVisiable"> {{singleMovie.overview}}</p>
+       
+          <br>
+       
+          <button href="#" class="btn btn-primary" (click)="toggleDate(singleMovie.id)"> {{singleMovie.isVisiable? 'Hide':'Show'}} Details</button>
+        </div> 
+      </div> 
+    </div>
+
+  </div>
+
+</div>
